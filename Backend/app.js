@@ -6,7 +6,7 @@ import fileUpload from 'express-fileupload';
 import userRouter from './routers/userRouter.js';
 import applicationRouter from './routers/applicationRouter.js'
 import jobRouter from './routers/jobRouter.js'
-import { dbConnection } from './controllers/dbconnection.js';
+import { dbConnection } from './database/dbconnection.js';
 import { errorMiddleWare } from './middlewares/error.js';
 
 
