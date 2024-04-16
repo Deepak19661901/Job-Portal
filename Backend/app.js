@@ -1,5 +1,5 @@
-import express from 'express'
 import dotenv  from 'dotenv';
+import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
@@ -8,8 +8,6 @@ import applicationRouter from './routers/applicationRouter.js'
 import jobRouter from './routers/jobRouter.js'
 import { dbConnection } from './database/dbconnection.js';
 import { errorMiddleWare } from './middlewares/error.js';
-
-
 
 const app = express();
 dotenv.config({path:"./config/.env"})

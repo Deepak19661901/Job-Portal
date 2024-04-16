@@ -1,9 +1,13 @@
 import mongoose  from "mongoose";
 import  validator from 'validator'
-import bcrypt, { compare } from 'bcrypt'
+import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv';
+dotenv.config()
 
-const userSchema = new  mongoose.Schema({
+
+
+const userSchema = new mongoose.Schema({
   name:{
     type:String,
     required:[true,"Please Provide Your Name"],
@@ -23,7 +27,8 @@ const userSchema = new  mongoose.Schema({
     type:String,
     required:[true,"Please Enter valid Password"],
     minLength:[8,"password must contain at least 8 character"],
-    maxLength:[30,"password must not more than 30 charcter"]
+    maxLength:[30,"password must not more than 30 charcter"],
+    select:false
   },
   role:{
     type:String,
@@ -36,9 +41,9 @@ const userSchema = new  mongoose.Schema({
   }
 });
 
-// First we will DO has the password befor sending the password to the database
+// First we will DO hash the password befor sending the password to the database
 userSchema.pre("save",async function(next){
-  if(!this.isModified(this.password)){
+  if(!this.isModified('password')){
     next()
   }
   this.password = await bcrypt.hash(this.password,10);
@@ -52,9 +57,10 @@ userSchema.methods.comparePassword = async function(enterdPassword){
 
 //Generating a jwt token for authorization
 
-userSchema.methods.getJsonWebToken = async function(){
-  return  jwt.sign({id:this._id},process.env.JWT_SECRET_KEY,{
+userSchema.methods.getJWTToken = async function(){
+  return jwt.sign({id:this._id},process.env.JWT_SECRET_KEY,{
     expiresIn:process.env.JWT_EXPIRE
+    
   })
 }
 

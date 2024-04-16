@@ -1,6 +1,5 @@
 import { json } from "express"
 
-
 class ErrorHandler extends Error{
   constructor(message,statusCode,){
 
@@ -31,7 +30,7 @@ export const errorMiddleWare = (err,req,res,next)=>{
     const message = `json webToken is expired. Try Again`
     err = new ErrorHandler(message,400);
   }
-  return res.status(statusCode).json({
+  return res.status(err.statusCode).json({
     sucess:false,
     message:err.message,  
   })
