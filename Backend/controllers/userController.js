@@ -20,7 +20,7 @@ export const register = catchAsyncError(async(req,res,next)=>{
   sendToken(user,200,res,"User Registered SuccesFully")
 
 })
-//self try for login
+
 
 export const login = catchAsyncError(async(req,res,next)=>{
 
