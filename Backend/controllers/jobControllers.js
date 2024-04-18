@@ -52,4 +52,43 @@ export const getMyJob = catchAsyncError(async(req,res,next)=>{
     myJobs,
   })
 })
+export const updateJobs = catchAsyncError(async(req,res,next)=>{
+  const { role } = req.user
+  if (role === "Job Seeker") {
+    return next(new ErrorHandler("Job seeker is not allowed to access this resource", 400))
+  }
+   const {id} = req.params
+   let job = await Job.findById(id)
+   if(!job){
+    return next(new ErrorHandler("Opps the Job is not Found!!"))
+   }
+   job = await Job.findByIdAndUpdate(id,req.body,{
+    new:true,
+    runValidators:true,
+    useFindAndModify:false,
+   })
+   res.status(200).json({
+    suceess:true,
+    job,
+    message:"Job Updated SuccessFully!"
+   })
+
+})
+
+export const deleteJob = catchAsyncError(async(req,res,next)=>{
+  const { role } = req.user
+  if (role === "Job Seeker") {
+    return next(new ErrorHandler("Job seeker is not allowed to access this resource", 400))
+  }
+  const {id} = req.params;
+  const job = await Job.findByIdAndDelete(id)
+  if(!job){
+    return next(new ErrorHandler("opps Job not Found"))
+  }
+  res.status(200).json({
+    success:true,
+    job,
+    message:" Job deleteted suceesFully"
+  })
+})
 
