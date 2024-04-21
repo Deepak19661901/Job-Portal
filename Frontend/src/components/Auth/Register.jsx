@@ -52,7 +52,7 @@ const Register = () => {
 
   return (
     <>
-      <section className="authPage">
+      <section className="authPage" style={{height:"100vh"}}>
         <div className="container">
           <div className="header">
             <img src="/JobZeelogo.png" alt="logo" />
@@ -125,7 +125,7 @@ const Register = () => {
           </form>
         </div>
         <div className="banner">
-          <img src="/register.png" alt="login" />
+          <img src="/register.png" alt="register" />
         </div>
       </section>
     </>
