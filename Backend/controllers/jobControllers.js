@@ -4,10 +4,10 @@ import { Job } from "../models/jobSchema.js"
 
 
 export const getAlljobs = catchAsyncError(async (req, res, next) => {
-  const Jobs = await Job.findOne({ expired: false })
+  const jobs = await Job.find({ expired: false })
   res.status(200).json({
     success: true,
-    Jobs
+    jobs
   })
 })
 
@@ -92,3 +92,18 @@ export const deleteJob = catchAsyncError(async(req,res,next)=>{
   })
 })
 
+export const getSingleJob = catchAsyncError(async(req,res,next)=>{
+  const {id} = req.params
+  try {
+    const job = await Job.findById(id)
+    if(!job){
+      return next(new ErrorHandler("Job is Not Found!",404))
+    }
+    res.status(200).json({
+      success:true,
+      job
+    })
+  } catch (error) {
+    return next(new ErrorHandler("Invalid ID/cast Error",400))
+  }
+})

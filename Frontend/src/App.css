@@ -236,6 +236,9 @@ p {
 .navbarHide {
   display: none;
 }
+/* .navbarshow{
+  display: block;
+} */
 
 .heroSection {
   display: flex;

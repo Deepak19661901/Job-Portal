@@ -43,8 +43,6 @@ const Login = () => {
   if(isAuthorized){
     return <Navigate to={'/'}/>
   }
-
-
   return (
     <>
       <section className="authPage" style={{height:"100vh"}}>
