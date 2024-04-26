@@ -145,7 +145,7 @@ const PostJob = () => {
               </select>
               <div>
                 {salaryType === "default" ? (
-                  <p>Please provide Salary Type *</p>
+                  <p>Please provide Salary Type</p>
                 ) : salaryType === "Fixed Salary" ? (
                   <input
                     type="number"
