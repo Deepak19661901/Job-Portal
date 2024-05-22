@@ -74,9 +74,10 @@ const PostJob = () => {
 
   return (
     <>
-      <div className="job_post page">
+      <div className="job_post page bg-slate-900 text-white">
         <div className="container">
-          <h3>POST NEW JOB</h3>
+        <h1 className="font-bold text-3xl">POST NEW JOB</h1>
+
           <form onSubmit={handleJobPost}>
             <div className="wrapper">
               <input
@@ -88,6 +89,7 @@ const PostJob = () => {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                className="text-amber-500"
               >
                 <option value="">Select Category</option>
                 <option value="Graphics & Design">Graphics & Design</option>
@@ -139,9 +141,9 @@ const PostJob = () => {
                 value={salaryType}
                 onChange={(e) => setSalaryType(e.target.value)}
               >
-                <option value="default">Select Salary Type</option>
-                <option value="Fixed Salary">Fixed Salary</option>
-                <option value="Ranged Salary">Ranged Salary</option>
+                <option value="default" className="text-black">Select Salary Type</option>
+                <option value="Fixed Salary" className="text-black">Fixed Salary</option>
+                <option value="Ranged Salary" className="text-black">Ranged Salary</option>
               </select>
               <div>
                 {salaryType === "default" ? (
@@ -172,12 +174,12 @@ const PostJob = () => {
               </div>
             </div>
             <textarea
-              rows="10"
+              rows="2"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Job Description"
             />
-            <button type="submit">Create Job</button>
+            <button type="submit" >Create Job</button>
           </form>
         </div>
       </div>

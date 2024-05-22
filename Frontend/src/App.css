@@ -202,6 +202,13 @@ p {
   padding: 25px 120px;
   align-items: center;
 }
+.footerHide {
+  background: #18191c;
+  display: none;
+  justify-content: space-between;
+  padding: 25px 120px;
+  align-items: center;
+}
 .footerShow div {
   display: flex;
   gap: 12px;
@@ -299,7 +306,7 @@ p {
   align-items: center;
   justify-content: center;
   padding: 10px;
-  color: #2d5649;
+  color: black;
 }
 .heroSection .details .card .content p:first-child {
   font-weight: bold;
@@ -432,7 +439,6 @@ p {
     width: 100%;
   }
 }
-
 .categories {
   min-width: 1500px;
   max-width: 1500px;

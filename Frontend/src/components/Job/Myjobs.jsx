@@ -75,7 +75,7 @@ const Myjobs = () => {
 
   return (
     <>
-      <div className="myJobs page">
+      <div className="myJobs page bg-slate-300  ">
         <div className="container">
           <h3>Your Posted Job</h3>
           {

@@ -33,7 +33,7 @@ const PopularCategories = () => {
     {
       id: 4,
       title: "MERN STACK Development",
-      subTitle: "1000+ Open Postions",
+      subTitle: "1000+ Open Positions",
       icon: <FaReact />,
     },
     {
@@ -61,21 +61,24 @@ const PopularCategories = () => {
       icon: <IoGameController />,
     },
   ];
+
   return (
-    <div className="categories">
-      <h3>POPULAR CATEGORIES</h3>
-      <div className="banner">
-        {categories.map((element) => {
-          return (
-            <div className="card" key={element.id}>
-              <div className="icon">{element.icon}</div>
+    <div className="bg-black  py-8">
+      <div className="container mx-auto">
+        <h3 className="text-3xl text-center font-bold mb-8 text-white">Explore Exciting Fields</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {categories.map((category) => (
+            <div key={category.id} className="card  rounded-lg shadow-md p-6">
+              <div className="icon text-white">{category.icon}</div>
               <div className="text">
-                <p>{element.title}</p>
-                <p>{element.subTitle}</p>
+                <p className="font-semibold text-blue-300">{category.title}</p>
+                <p className="text-sm text-blue-300">{category.subTitle}</p>
               </div>
+              
             </div>
-          );
-        })}
+            
+          ))}
+        </div>
       </div>
     </div>
   );
