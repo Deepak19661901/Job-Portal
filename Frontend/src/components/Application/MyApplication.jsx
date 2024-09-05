@@ -17,10 +17,10 @@ const MyApplication = () => {
     const fetchData = async () => {
       try {
         if (user && user.role === 'Employer') {
-          const res = await axios.get('http://localhost:4000/api/v2/application/employer/getall', { withCredentials: true });
+          const res = await axios.get('https://job-portal-ayfi.onrender.com/api/v2/application/employer/getall', { withCredentials: true });
           setApplication(res.data.applications);
         } else {
-          const res = await axios.get('http://localhost:4000/api/v2/application/jobseeker/getall', { withCredentials: true });
+          const res = await axios.get('https://job-portal-ayfi.onrender.com/api/v2/application/jobseeker/getall', { withCredentials: true });
           setApplication(res.data.applications);
         }
       } catch (error) {
@@ -37,7 +37,7 @@ const MyApplication = () => {
 
   const deleteApplication = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/v2/application/delete/${id}`, { withCredentials: true });
+      await axios.delete(`https://job-portal-ayfi.onrender.com/api/v2/application/delete/${id}`, { withCredentials: true });
       setApplication((prevApplication) => prevApplication.filter((app) => app._id !== id));
       toast.success('Application deleted successfully.');
     } catch (error) {
