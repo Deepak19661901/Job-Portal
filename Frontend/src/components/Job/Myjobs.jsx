@@ -19,7 +19,7 @@ const Myjobs = () => {
     const fetchJobs = async () => {
       try {
 
-        const { data } = await axios.get("http://localhost:4000/api/v2/job/getmyjobs", { withCredentials: true })
+        const { data } = await axios.get("https://job-portal-ayfi.onrender.com/api/v2/job/getmyjobs", { withCredentials: true })
         setMyJobs(data.myJobs)
       } catch (error) {
         toast(error.response.data.message)
@@ -44,7 +44,7 @@ const Myjobs = () => {
   //function for editing jobs
   const handleUpdateJob = async (jobId) => {
     const updateJob = myJobs.find(job => job._id === jobId)
-    await axios.put(`http://localhost:4000/api/v2/job/update/${jobId}`, updateJob, {
+    await axios.put(`https://job-portal-ayfi.onrender.com/api/v2/job/update/${jobId}`, updateJob, {
       withCredentials: true
     }).then((res) => {
       toast.success(res.data.message)
@@ -55,7 +55,7 @@ const Myjobs = () => {
   }
   // Function for deleting job
   const handeleJobDelete = async (jobId) => {
-    await axios.delete(`http://localhost:4000/api/v2/job/delete/${jobId}`, {
+    await axios.delete(`https://job-portal-ayfi.onrender.com/api/v2/job/delete/${jobId}`, {
       withCredentials: true
     }).then((res) => {
       toast.success(res.data.message)
