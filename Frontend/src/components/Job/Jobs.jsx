@@ -12,7 +12,7 @@ const Jobs = () => {
   const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/v2/job/getall", { withCredentials: true })
+    axios.get("https://job-portal-ayfi.onrender.com/api/v2/job/getall", { withCredentials: true })
       .then((res) => {
         setJobs(res.data.jobs);
         setSearchResult(res.data.jobs);
