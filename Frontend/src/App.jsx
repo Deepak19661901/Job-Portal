@@ -52,7 +52,7 @@ const App = () => {
         <Route path='/application/me' element={<MyApplication/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
-    <Footer/>
+    {/* <Footer/> */}
     <Toaster/>
     </BrowserRouter>
   )

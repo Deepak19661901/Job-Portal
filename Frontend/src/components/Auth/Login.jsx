@@ -39,23 +39,35 @@ const Login = () => {
   };
 
   if (isAuthorized) {
-    return <Navigate to={'/'} />;
+    return <Navigate to="/" />;
   }
 
   return (
-    <section className="flex flex-col md:flex-row h-screen">
-      <div className="md:w-1/2 bg-white flex justify-center items-center">
+    <section className="flex flex-col md:flex-row h-screen bg-gradient-to-r from-purple-500 to-blue-500">
+      {/* Left Section - Image and Quotes */}
+      <div className="hidden md:flex md:w-1/2 items-center justify-center bg-cover bg-center" style={{ backgroundImage: 'url("/path/to/your/image.jpg")' }}>
+        <div className="bg-white bg-opacity-60 p-8 rounded-lg shadow-lg text-center">
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">"The future belongs to those who believe in the beauty of their dreams."</h2>
+          <p className="text-lg text-gray-700">— Eleanor Roosevelt</p>
+        </div>
+      </div>
+
+      {/* Right Section - Login Form */}
+      <div className="flex md:w-1/2 justify-center items-center bg-white">
         <div className="max-w-md w-full p-8">
+          {/* Logo */}
           <div className="text-center mb-4">
-            <img src="/logo.png" alt="logo" className="mx-auto w-24" />
-            <h3 className="text-xl font-semibold">Login to your account</h3>
+            <img src="/logo.png" alt="logo" className="mx-auto w-24 h-24 object-contain" />
+            <h3 className="text-2xl font-semibold text-gray-700">Login to your account</h3>
           </div>
+
+          {/* Form */}
           <form onSubmit={handleLogin}>
             <div className="mb-4">
-              <label className="block mb-2">Login As</label>
+              <label className="block mb-2 text-gray-600">Login As</label>
               <div className="relative">
                 <select
-                  className="w-full py-2 pl-4 pr-10 border rounded-lg appearance-none"
+                  className="w-full py-2 pl-4 pr-10 border rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
                 >
@@ -67,44 +79,42 @@ const Login = () => {
               </div>
             </div>
             <div className="mb-4">
-              <label className="block mb-2">Email Address</label>
+              <label className="block mb-2 text-gray-600">Email Address</label>
               <div className="relative">
                 <input
                   type="email"
                   placeholder="Dk@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full py-2 pl-4 pr-10 border rounded-lg"
+                  className="w-full py-2 pl-4 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <MdOutlineMailOutline className="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-400" />
               </div>
             </div>
             <div className="mb-4">
-              <label className="block mb-2">Password</label>
+              <label className="block mb-2 text-gray-600">Password</label>
               <div className="relative">
                 <input
                   type="password"
                   placeholder="Your Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full py-2 pl-4 pr-10 border rounded-lg"
+                  className="w-full py-2 pl-4 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <RiLock2Fill className="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-400" />
               </div>
             </div>
-            <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+            >
               Login
             </button>
-            <Link to={"/register"} className="block text-center mt-4 text-blue-500">Register</Link>
+            <Link to="/register" className="block text-center mt-4 text-blue-500 hover:underline">
+              Register
+            </Link>
           </form>
         </div>
-      </div>
-      <div className=" hidden md:block w-96 h-96 rounded-lg  mt-52">
-        <img
-          src="/logins.png"
-          alt="login"
-          className="w-full h-full object-cover object-center shadow-md"
-        />
       </div>
     </section>
   );
